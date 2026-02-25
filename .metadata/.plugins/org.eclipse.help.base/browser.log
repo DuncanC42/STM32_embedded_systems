@@ -1,0 +1,5 @@
+
+Dec 04, 2025 09:21:10.53 NEW SESSION
+Dec 04, 2025 09:21:10.54 which: no mozilla in (/usr/local/bin:/usr/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin)
+Dec 04, 2025 09:21:10.54 /usr/bin/firefox
+Dec 04, 2025 09:21:10.54 which: no netscape in (/usr/local/bin:/usr/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin)
