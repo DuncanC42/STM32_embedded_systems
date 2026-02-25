@@ -35,33 +35,28 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //============================================================
 int main()
 {
-	HAL_Init();
-	HAL_MspInit();
-	static int state = 0;
-	while(1)
-		{
+    HAL_Init();
+    HAL_MspInit();
+    red_led(0);
+    blue_led(0);
+    green_led(0);
 
+    // Configuration TIM5 : période de 1 seconde (valeurs temporaires pour test)
+    htim5.Instance = TIM5;
+    htim5.Init.Prescaler = 8399;   // (PSC+1) = 8400 → Tick = 100µs
+    htim5.Init.Period    = 9999;   // (ARR+1) = 10000 → T_CNT = 1s
+    HAL_TIM_Base_Init(&htim5);
+    HAL_TIM_Base_Start(&htim5);
 
-			switch(state)
-			{
-				case 0 :
-					if ( sw_center_raw() == 1 ) {
-						state = 1; // détermination de l'état suivant
-					}
-					red_led(0); green_led(0); blue_led(0); 		 // Sorties pour l'état 0;
-					break;
-
-				case 1 :
-					if ( sw_down_raw() == 1 ) {
-						state = 0;       // détermination de l'état suivant
-					}
-					red_led(1); green_led(1); blue_led(1);		 // Sorties pour l'état 1;
-					break;
-
-				default : break;
-			}
-		}
-	return 0;
+    while (1)
+    {
+        // La LED bascule quand le compteur dépasse la moitié de sa période
+        if (htim5.Instance->CNT < 5000)
+            red_led(1);
+        else
+            red_led(0);
+    }
+    return 0;
 }
 //============================================================
 

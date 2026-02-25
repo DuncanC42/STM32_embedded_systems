@@ -30,7 +30,13 @@ int HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
 //=======================================================================
 void HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
 {
-	// A COMPLETER
+    htim->Instance->CNT = 0;      // remise à zéro du compteur
+    htim->Instance->CR1 |= 0x01;  // bit CEN (Counter ENable) : démarre le comptage
+}
+
+void HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
+{
+    htim->Instance->CR1 &= ~0x01; // efface le bit CEN : arrête le comptage
 }
 //=======================================================================
 void HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim)
@@ -38,10 +44,6 @@ void HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim)
 	// A COMPLETER 
 }
 //=======================================================================
-void HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
-{
-	// A COMPLETER 
-}
 //=======================================================================
 void HAL_TIM_Base_Stop_IT(TIM_HandleTypeDef *htim)
 {

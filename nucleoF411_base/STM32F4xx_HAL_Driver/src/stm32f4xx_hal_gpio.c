@@ -152,7 +152,7 @@ void HAL_GPIO_WritePort(GPIO_TypeDef* GPIOx, uint16_t val, uint16_t mask) // //u
 //===============================================================================
 void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint16_t val)
 {
-    if (val) {
+    if (val == 0) {
         // Mettre le bit à 1
         GPIOx->ODR |= GPIO_Pin;
     } else {
